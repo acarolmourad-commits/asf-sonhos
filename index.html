@@ -1,1 +1,51 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ASF Sonhos — Vision board de metas de surf | ASF</title><meta name="description" content="Vision board de metas e sonhos de surf: escreva seus objetivos, acompanhe e celebre cada conquista. Satélite do app ASF."><link rel="canonical" href="https://acarolmourad-commits.github.io/asf-sonhos/"><meta name="theme-color" content="#00A8CC"><style>:root{--p:#00A8CC;--d:#0E2439;--u:#9B59B6;--bg:#F7FBFC;--g:#5A6B7A}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--d)}nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #E5EEF2;padding:10px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}nav a{color:var(--p);text-decoration:none;font-weight:700;font-size:13px}nav a.on{color:var(--u)}header{background:linear-gradient(135deg,var(--u),var(--p));color:#fff;padding:40px 20px 30px;text-align:center}.wrap{max-width:640px;margin:0 auto;padding:24px 16px 60px}.row{display:flex;gap:8px;margin-bottom:14px}input{flex:1;padding:11px;border:2px solid var(--p);border-radius:10px;font-size:15px}button.add{background:linear-gradient(135deg,var(--p),var(--u));color:#fff;border:0;padding:0 18px;border-radius:10px;font-weight:800;font-size:18px;cursor:pointer}.sonho{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:10px;box-shadow:0 2px 8px rgba(14,36,57,.06);display:flex;gap:10px;align-items:center;font-size:15px}.sonho input{width:auto;accent-color:var(--p)}.sonho.done span{text-decoration:line-through;opacity:.55}.muted{color:var(--g);font-size:12.5px}footer{text-align:center;font-size:12.5px;color:var(--g);padding:24px;border-top:1px solid #E5EEF2}</style></head><body><nav><a href="https://acarolmourad-commits.github.io/asf-app/">🏄 App</a><a class="on" href="https://acarolmourad-commits.github.io/asf-sonhos/">🌠 Sonhos</a><a href="https://acarolmourad-commits.github.io/asf-desafio/">📈 Desafio 30</a><a href="https://acarolmourad-commits.github.io/asf-diario/">📓 Diário</a><a href="https://acarolmourad-commits.github.io/asf-manobras/">⚡ Manobras</a></nav><header><h1>🌠 Quadro de sonhos</h1><p>Escreva suas metas de surf — do primeiro drop àquela surf trip.</p></header><main class="wrap"><div class="row"><input id="novo" placeholder="Ex.: pegar minha primeira parede verde" maxlength="80"><button class="add" onclick="add()">+</button></div><div id="lista"></div><p class="muted">Sonhos ficam salvos no seu navegador. Quebre metas grandes em passos com o <a href="https://acarolmourad-commits.github.io/asf-desafio/" style="color:var(--p)">Desafio 30</a> e registre a jornada no <a href="https://acarolmourad-commits.github.io/asf-diario/" style="color:var(--p)">Diário</a>.</p></main><footer>🌊 ASF · <a href="https://acarolmourad-commits.github.io/" style="color:var(--p)">Hub de apps</a></footer><script>const K='asf-sonhos-v1';let d=JSON.parse(localStorage.getItem(K)||'[]');function render(){const l=document.getElementById('lista');l.innerHTML='';d.forEach((s,i)=>l.insertAdjacentHTML('beforeend',`<div class="sonho ${s.ok?'done':''}"><input type="checkbox" ${s.ok?'checked':''} data-i="${i}"><span>${s.t}</span></div>`));}function add(){const v=document.getElementById('novo').value.trim();if(!v)return;d.push({t:v,ok:false});localStorage.setItem(K,JSON.stringify(d));document.getElementById('novo').value='';render();}document.getElementById('lista').onchange=e=>{d[e.target.dataset.i].ok=e.target.checked;localStorage.setItem(K,JSON.stringify(d));render();};render();</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASF Sonhos — ASF</title>
+<meta name="description" content="Vision board de metas e sonhos de surf">
+<style>
+:root{--rosa:#ff4d8d;--roxo:#7b2ff7;--areia:#fff5ec;--mar:#00c2cb}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{background:linear-gradient(160deg,#fff5ec,#ffe3f1 60%,#e0f7fa);min-height:100vh;color:#333}
+header{background:linear-gradient(90deg,var(--rosa),var(--roxo));color:#fff;padding:2rem 1rem;text-align:center}
+header h1{font-size:2rem} header p{opacity:.9;margin-top:.4rem}
+nav{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;padding:.8rem;background:#fff;box-shadow:0 2px 8px #0001;position:sticky;top:0;z-index:10}
+nav a{background:var(--areia);border:1px solid #ffd3e6;color:#c2185b;padding:.3rem .7rem;border-radius:20px;font-size:.78rem;text-decoration:none}
+main{max-width:760px;margin:1.5rem auto;padding:0 1rem}
+.card{background:#fff;border-radius:16px;padding:1.4rem;box-shadow:0 4px 16px #7b2ff720;margin-bottom:1.2rem}
+.card h2{color:var(--roxo);margin-bottom:.6rem;font-size:1.2rem}
+button{background:linear-gradient(90deg,var(--rosa),var(--roxo));color:#fff;border:none;padding:.6rem 1.2rem;border-radius:24px;font-size:1rem;cursor:pointer;margin:.2rem 0}
+input,select,textarea{padding:.5rem;border:1px solid #ddd;border-radius:10px;width:100%;margin:.3rem 0;font-size:1rem}
+.xp{position:fixed;bottom:1rem;right:1rem;background:#fff;border:2px solid var(--rosa);border-radius:24px;padding:.4rem 1rem;font-weight:bold;color:var(--roxo);box-shadow:0 4px 12px #0002}
+footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
+</style>
+</head>
+<body>
+<header><h1>🌠 ASF Sonhos</h1><p>Vision board de metas e sonhos de surf</p></header>
+<nav><a href="https://acarolmourad-commits.github.io/">🌐 Hub ASF</a>
+<a href="https://acarolmourad-commits.github.io/asf-app/">🏄‍♀️ ASF App</a>
+<a href="https://acarolmourad-commits.github.io/asf-ranking/">🏆 Ranking</a>
+<a href="https://acarolmourad-commits.github.io/asf-desafios/">Desafios</a>
+<a href="https://acarolmourad-commits.github.io/asf-desafio/">Desafio 30</a>
+<a href="https://acarolmourad-commits.github.io/asf-inspiracao/">Inspiração</a></nav>
+<main>
+<div class="card"><h2>🌠 Meus sonhos de surf</h2>
+<input id="s" placeholder="Ex: Surfar um tubo até 2027 🌊">
+<select id="prazo"><option>Este mês</option><option>Este ano</option><option>Sonho grande</option></select>
+<button onclick="add()">Plantar sonho (+10 XP)</button></div>
+<div class="card"><h2>✨ Vision board</h2><div id="board"></div></div>
+<div class="card"><p>Sonho sem plano é desejo: transforme em <a href='https://acarolmourad-commits.github.io/asf-desafios/'>desafios semanais</a> e registre o progresso no <a href='https://acarolmourad-commits.github.io/asf-diario/'>Diário</a>.</p></div>
+<div class="card"><h2>🌐 Ecossistema ASF</h2><p>Ganhe XP aqui e veja seu progresso no <a href="https://acarolmourad-commits.github.io/asf-ranking/">ASF Ranking</a>. Explore tudo no <a href="https://acarolmourad-commits.github.io/">Hub ASF</a>.</p></div>
+</main>
+<div class="xp">⭐ XP: <span id="xp">0</span></div>
+<footer>ASF — Associação de Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/">asf-app</a></footer>
+<script>
+const XP=()=>parseInt(localStorage.getItem('asf_xp')||'0');
+function addXP(n){localStorage.setItem('asf_xp',XP()+n);document.getElementById('xp').textContent=XP();}
+document.getElementById('xp').textContent=XP();
+const seed=[{s:'Pegar minha primeira onda de pé',p:'Este mês'},{s:'Surfar em Floripa com as amigas',p:'Este ano'},{s:'Um tubo. Um dia. 🌊',p:'Sonho grande'}];const COR={'Este mês':'#e0f7fa','Este ano':'#f3e8ff','Sonho grande':'#ffe3f1'};function render(){const l=JSON.parse(localStorage.getItem('asf_sonhos')||'null')||seed;document.getElementById('board').innerHTML=l.map((x,i)=>`<div style="background:${COR[x.p]};border-radius:12px;padding:.8rem;margin:.5rem 0"><b>${x.s}</b> <span style="float:right;font-size:.75rem;color:#888">${x.p}</span><br><label style="font-size:.8rem"><input type="checkbox" style="width:auto" onchange="real(${i})"> Realizado! 🎉</label></div>`).join('');}window.add=()=>{const s=document.getElementById('s').value;if(!s)return;const l=JSON.parse(localStorage.getItem('asf_sonhos')||'null')||seed;l.unshift({s,p:document.getElementById('prazo').value});localStorage.setItem('asf_sonhos',JSON.stringify(l));render();addXP(10);};window.real=i=>{const l=JSON.parse(localStorage.getItem('asf_sonhos')||'null')||seed;alert('🎉 SONHO REALIZADO! +50 XP');l.splice(i,1);localStorage.setItem('asf_sonhos',JSON.stringify(l));addXP(50);render();};render();
+</script>
+</body>
+</html>
