@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASF Sonhos — Vision board de surf</title>
+<meta name="description" content="Manifeste suas metas de surf: sonhos com prazo, progresso e celebração. Satélite do app ASF.">
+<link rel="canonical" href="https://acarolmourad-commits.github.io/asf-sonhos/">
+<style>body{font-family:system-ui,sans-serif;margin:0;background:linear-gradient(180deg,#312e81,#701a75);color:#f5f3ff;min-height:100vh}header{padding:2rem;text-align:center}nav{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;padding:1rem;background:#00000033}nav a{color:#c4b5fd;text-decoration:none;font-size:.85rem}main{max-width:640px;margin:2rem auto;padding:0 1rem}.card{background:#ffffff18;border-radius:16px;padding:1.5rem;margin-bottom:1rem;backdrop-filter:blur(6px)}input,select{width:100%;padding:.6rem;margin:.3rem 0;border:1px solid #a78bfa;border-radius:8px;background:#ffffff22;color:#fff;box-sizing:border-box}input::placeholder{color:#ddd6fe}button{background:#a78bfa;color:#2e1065;border:0;border-radius:9999px;padding:.7rem 1.4rem;font-weight:700;cursor:pointer}.dream{background:#ffffff12;border-radius:12px;padding:1rem;margin:.6rem 0}.dream.done{opacity:.6;text-decoration:line-through}.bar{background:#ffffff22;border-radius:9999px;height:10px;margin-top:.5rem}.bar i{display:block;background:#f0abfc;height:100%;border-radius:9999px}footer{text-align:center;padding:2rem;color:#c4b5fd}</style>
+</head>
+<body>
+<header><h1>ASF Sonhos 🌠</h1><p>Todo sonho de surf começa com uma remada</p></header>
+<nav id="net"></nav>
+<main>
+<div class="card"><h2>✨ Manifestar um sonho</h2>
+<input id="d" placeholder="Ex: Dropar minha primeira onda de 1,5m">
+<input id="prazo" type="date">
+<button onclick="add()">Manifestar 🌟</button></div>
+<div class="card"><h2>🌌 Meu vision board</h2><div id="board"></div></div>
+<div class="card"><p>🎯 Transforme sonhos em treino no <a href="https://acarolmourad-commits.github.io/asf-manobras/" style="color:#f0abfc">ASF Manobras</a>, acompanhe no <a href="https://acarolmourad-commits.github.io/asf-diario/" style="color:#f0abfc">Diário</a> e celebre na <a href="https://acarolmourad-commits.github.io/asf-comunidade/" style="color:#f0abfc">Comunidade</a>.</p></div>
+</main>
+<footer>ASF Sonhos — satélite do app ASF</footer>
+<script>
+const SITES=[["asf-app","App ASF"],["asf-praias","Praias"],["asf-previsao","Previsão"],["asf-mare","Maré"],["asf-mapa","Mapa"],["asf-alerta","Alerta"],["asf-treino","Treino"],["asf-manobras","Manobras"],["asf-apnea","Apneia"],["asf-yoga","Yoga"],["asf-bemestar","Bem-Estar"],["asf-mental","Mental"],["asf-nutricao","Nutrição"],["asf-equipamento","Equipamento"],["asf-eventos","Eventos"],["asf-comunidade","Comunidade"],["asf-carona","Carona"],["asf-viagens","Viagens"],["asf-galeria","Galeria"],["asf-goldenhour","Golden Hour"],["asf-quiz","Quiz"],["asf-ranking","Ranking"],["asf-diario","Diário"],["asf-eco","Eco"],["asf-ponto","Ponto"],["asf-clube","Clube"]];
+document.getElementById('net').innerHTML=SITES.map(s=>`<a href="https://acarolmourad-commits.github.io/${s[0]}/">${s[1]}</a>`).join('');
+const K='asf-sonhos';
+function load(){return JSON.parse(localStorage.getItem(K)||'[]');}
+function render(){const l=load();document.getElementById('board').innerHTML=l.length?l.map((x,i)=>{const days=x.prazo?Math.ceil((new Date(x.prazo)-Date.now())/864e5):null;return `<div class="dream ${x.done?'done':''}"><b>${x.d}</b>${days!==null?`<br><small>${x.done?'Realizado! 🎉':days>0?'Faltam '+days+' dias':'Prazo passou — replaneje!'}</small>`:''}<div style="margin-top:.5rem">${x.done?'':`<button onclick="done(${i})">Realizei! 🎉</button>`} <button style="background:#ffffff33" onclick="del(${i})">✕</button></div></div>`;}).join(''):'<p>Seu vision board está vazio. Manifeste seu primeiro sonho! 🌟</p>';}
+function add(){const d=document.getElementById('d').value.trim();if(!d)return alert('Descreva o sonho!');const l=load();l.unshift({d,prazo:document.getElementById('prazo').value,done:false});localStorage.setItem(K,JSON.stringify(l));document.getElementById('d').value='';render();}
+function done(i){const l=load();l[i].done=true;localStorage.setItem(K,JSON.stringify(l));render();}
+function del(i){const l=load();l.splice(i,1);localStorage.setItem(K,JSON.stringify(l));render();}
+render();
+</script>
+</body>
+</html>
