@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://acarolmourad-commits.github.io/asf-sonhos/sitemap.xml
+
+Sitemap: https://sonhos.asf.surf/sitemap.xml
